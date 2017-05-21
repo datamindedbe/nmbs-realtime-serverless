@@ -20,39 +20,12 @@ service: nmbs-realtime-serverless
 provider:
   name: aws
   runtime: python2.7
-
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
-
-# you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:PutObject"
-#      Resource:
-#        Fn::Join:
-#          - ""
-#          - - "arn:aws:s3:::"
-#            - "Ref" : "ServerlessDeploymentBucket"
-#            - "/*"
-
-
+  region: eu-west-1
+  deploymentBucket: ${file(config.yml):deployment_bucket}
   environment:
-    variable1: value1
+    nmbs_feed_url: ${file(config.yml):feed_url}
+    nmbs_connection_string: ${file(config.yml):connection_string}
 
-# you can add packaging information here
-#package:
-#  include:
-#    - include-me.py
-#    - include-me-dir/**
-#  exclude:
-#    - exclude-me.py
-#    - exclude-me-dir/**
 
 functions:
   load_reference_data:

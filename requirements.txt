@@ -1,0 +1,10 @@
+requests
+boto3
+awscli
+psycopg2
+pytest
+testing.postgresql
+gtfs-realtime-bindings
+pandas
+sqlalchemy
+numpy
