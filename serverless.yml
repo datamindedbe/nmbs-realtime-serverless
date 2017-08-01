@@ -29,8 +29,8 @@ provider:
 
 functions:
   load_reference_data:
-    handler: nmbs-realtime/load_reference_data.py
+    handler: nmbs-realtime/load_reference_data.lambda_handler
     events:
       - schedule: rate(1 day)
-    memorySize: 512
+    memorySize: 1536
     timeout: 300
